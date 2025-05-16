@@ -2,12 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>pi-uke&#39;s blog</title>
   
-  <subtitle>あっと驚くようなことの連続&#92;n&#92;nまっすぐに行こう　HEADLINER</subtitle>
-  <link href="https://piuke.github.io/piuke.github.io/atom.xml" rel="self"/>
+  <subtitle>あっと驚くようなことの連続</subtitle>
+  <link href="https://piuke.github.io/atom.xml" rel="self"/>
   
-  <link href="https://piuke.github.io/piuke.github.io/"/>
+  <link href="https://piuke.github.io/"/>
   <updated>2025-05-16T14:46:42.506Z</updated>
-  <id>https://piuke.github.io/piuke.github.io/</id>
+  <id>https://piuke.github.io/</id>
   
   <author>
     <name>pi-uke</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://piuke.github.io/piuke.github.io/2025/05/16/hello-world/"/>
-    <id>https://piuke.github.io/piuke.github.io/2025/05/16/hello-world/</id>
+    <link href="https://piuke.github.io/2025/05/16/hello-world/"/>
+    <id>https://piuke.github.io/2025/05/16/hello-world/</id>
     <published>2025-05-15T16:00:00.000Z</published>
     <updated>2025-05-16T14:46:42.506Z</updated>
     
