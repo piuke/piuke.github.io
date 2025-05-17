@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Windows平台使用Hexo+GithubPage配置Butterfly博客 | pi-uke's blog</title><meta name="author" content="pi-uke"><meta name="copyright" content="pi-uke"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本博客采用 Hexo + GithubPage 在 Windows 平台搭建，同时使用了 Butterfly 主题。 若在搭建过程中出现问题，请善用ai&#x2F;stfw&#x2F;rtfm。 0. 准备 一个 github 账号，一台 Windows 设备，魔法（也许需要）。 至于为什么不用 Linux 呢，因为我懒得找 Linux 的教程，理论上应该容易一点罢。 1. 本地部署Hexo 你需要安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows平台使用Hexo+GithubPage配置Butterfly博客">
+<meta property="og:url" content="https://piuke.github.io/2025/05/17/blogmaker/index.html">
+<meta property="og:site_name" content="pi-uke&#39;s blog">
+<meta property="og:description" content="本博客采用 Hexo + GithubPage 在 Windows 平台搭建，同时使用了 Butterfly 主题。 若在搭建过程中出现问题，请善用ai&#x2F;stfw&#x2F;rtfm。 0. 准备 一个 github 账号，一台 Windows 设备，魔法（也许需要）。 至于为什么不用 Linux 呢，因为我懒得找 Linux 的教程，理论上应该容易一点罢。 1. 本地部署Hexo 你需要安">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s21.ax1x.com/2025/05/17/pEvJvLt.png">
+<meta property="article:published_time" content="2025-05-17T09:26:08.000Z">
+<meta property="article:modified_time" content="2025-05-17T11:18:16.010Z">
+<meta property="article:author" content="pi-uke">
+<meta property="article:tag" content="奇奇怪怪的东西？">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s21.ax1x.com/2025/05/17/pEvJvLt.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Windows平台使用Hexo+GithubPage配置Butterfly博客",
+  "url": "https://piuke.github.io/2025/05/17/blogmaker/",
+  "image": "https://s21.ax1x.com/2025/05/17/pEvJvLt.png",
+  "datePublished": "2025-05-17T09:26:08.000Z",
+  "dateModified": "2025-05-17T11:18:16.010Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "pi-uke",
+      "url": "https://piuke.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/95162603_p0-removebg-preview.png"><link rel="canonical" href="https://piuke.github.io/2025/05/17/blogmaker/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Windows平台使用Hexo+GithubPage配置Butterfly博客',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="pi-uke's blog" type="application/atom+xml">
+</head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s21.ax1x.com/2025/05/17/pEvJvLt.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">pi-uke's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Windows平台使用Hexo+GithubPage配置Butterfly博客</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Windows平台使用Hexo+GithubPage配置Butterfly博客</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-17T09:26:08.000Z" title="发表于 2025-05-17 17:26:08">2025-05-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-17T11:18:16.010Z" title="更新于 2025-05-17 19:18:16">2025-05-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span class="waline-pageview-count" data-path="/2025/05/17/blogmaker/"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2025-05-17 19:18:16&quot;}" hidden></div><p>本博客采用 Hexo + GithubPage 在 Windows 平台搭建，同时使用了
+Butterfly 主题。</p>
+<p>若在搭建过程中出现问题，请善用ai/stfw/rtfm。</p>
+<h1 id="准备">0. 准备</h1>
+<p>一个 github 账号，一台 Windows 设备，魔法（也许需要）。<br />
+至于为什么不用 Linux 呢，因为我懒得找 Linux
+的教程，理论上应该容易一点罢。</p>
+<h1 id="本地部署hexo">1. 本地部署Hexo</h1>
+<p>你需要安装 Node.js 环境和 npm。推荐从<a
+target="_blank" rel="noopener" href="https://nodejs.org/zh-cn">官网</a>下载。</p>
+<p>同时，官网也有命令行安装方式，如下。若使用命令行记得不要全部直接执行，若无法执行，考虑重启命令行加载环境。
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Download and install fnm:</span></span><br><span class="line">winget install Schniz.fnm</span><br><span class="line"></span><br><span class="line"><span class="comment"># Download and install Node.js:</span></span><br><span class="line">fnm install <span class="number">22</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Verify the Node.js version:</span></span><br><span class="line">node <span class="literal">-v</span> <span class="comment"># Should print &quot;v22.15.1&quot;.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Verify npm version:</span></span><br><span class="line">npm <span class="literal">-v</span> <span class="comment"># Should print &quot;10.9.2&quot;.</span></span><br></pre></td></tr></table></figure></p>
+<p>然后就可以开始配置 Hexo 了，如下。 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install hexo</span></span><br><span class="line">npm install <span class="literal">-g</span> hexo<span class="literal">-cli</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># init hexo frame</span></span><br><span class="line">hexo init some_dir_name</span><br><span class="line"><span class="built_in">cd</span> some_dir_name</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line"><span class="comment"># start hexo server</span></span><br><span class="line">hexo s</span><br><span class="line"></span><br><span class="line"><span class="comment"># visit hexo server in powershell, eg. localhost:4000</span></span><br><span class="line"><span class="comment"># use Ctrl + Click to visit is easy!</span></span><br></pre></td></tr></table></figure>
+若能打开博客网站，看到ui，则部署成功。</p>
+<p>此时应该会有默认的一个<code>hello world.md</code>，你应该可以在你的网站上看到这个项目的网页。</p>
+<h1 id="搭载主题">2. 搭载主题</h1>
+<p>本博客选用的主题是 <a
+target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a>，也可根据自己喜好选择<a
+target="_blank" rel="noopener" href="https://hexo.io/themes/">其他主题</a>，如NeXT等也比较常用，下文仅介绍Butterfly相关配置。</p>
+<p>大多数配置都可以参考<a
+target="_blank" rel="noopener" href="https://butterfly.js.org/">官方配置文档</a>来安装，偶尔会出现插件问题，记得多问ai/stfw，本文仅作参考，只记录笔者进行了的配置内容，仅供参考。由于配置项繁多，推荐观看<a
+target="_blank" rel="noopener" href="https://butterfly.js.org/posts/4aa8abbe/">官方主题配置页</a>，本文仅起辅助作用。段末给出了作者npm安装的所有包，如果出现插件问题可作参考。</p>
+<p>以下操作若无特殊说明均在博客根目录下进行，尤其分清<code>themes/butterfly/_config.yml</code>和<code>_config.yml</code>。</p>
+<h2 id="安装butterfly并配置">2.1. 安装butterfly并配置</h2>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo<span class="literal">-theme-butterfly</span></span><br></pre></td></tr></table></figure>
+<p>打开<code>_config.yml</code>，修改<code>theme</code>项为<code>butterfly</code>.
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">butterfly</span></span><br></pre></td></tr></table></figure> 安装其他需要的插件，如 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo<span class="literal">-renderer-pug</span> hexo<span class="literal">-renderer-stylus</span> <span class="literal">--save</span></span><br></pre></td></tr></table></figure> 进行 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+访问网页，能看到渲染成功即可。</p>
+<h2 id="配置个人信息">2.2. 配置个人信息</h2>
+<p>打开<code>_config.yml</code>，修改下列选项，以下给出的是我的配置。
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">pi-uke&#x27;s</span> <span class="string">blog</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;あっと驚くようなことの連続&#x27;</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">pi-uke</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+title和subtitle显示为你的网页名，title也会显示在你的首页，author显示为你的名字。</p>
+<h2 id="配置图片">2.3. 配置图片</h2>
+<p>打开<code>themes/butterfly/_config.yml</code>，修改下列选项。
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># --------------------------------------</span></span><br><span class="line"><span class="comment"># Image Settings</span></span><br><span class="line"><span class="comment"># --------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="attr">favicon:</span> <span class="string">/img/95162603_p0-removebg-preview.png</span></span><br><span class="line"></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="attr">img:</span> <span class="string">/img/92520387_p0.jpg</span></span><br><span class="line">  <span class="attr">effect:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Disable all banner images</span></span><br><span class="line"><span class="attr">disable_top_img:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If the banner of page not setting, it will show the default_top_img</span></span><br><span class="line"><span class="attr">default_top_img:</span> <span class="string">/img/headliner.png</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The banner image of index page</span></span><br><span class="line"><span class="attr">index_img:</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># The banner image of archive page</span></span><br><span class="line"><span class="attr">archive_img:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># <span class="doctag">Note:</span> tag page, not tags page</span></span><br><span class="line"><span class="attr">tag_img:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The banner image of tag page, you can set the banner image for each tag</span></span><br><span class="line"><span class="comment"># Format:</span></span><br><span class="line"><span class="comment">#  - tag name: xxxxx</span></span><br><span class="line"><span class="attr">tag_per_img:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># <span class="doctag">Note:</span> category page, not categories page</span></span><br><span class="line"><span class="attr">category_img:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The banner image of category page, you can set the banner image for each category</span></span><br><span class="line"><span class="comment"># Format:</span></span><br><span class="line"><span class="comment">#  - category name: xxxxx</span></span><br><span class="line"><span class="attr">category_per_img:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The background image of footer</span></span><br><span class="line"><span class="attr">footer_img:</span> <span class="string">/img/100734973_p0.png</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Website Background</span></span><br><span class="line"><span class="comment"># Can set it to color or image url</span></span><br><span class="line"><span class="attr">background:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cover:</span></span><br><span class="line">  <span class="comment"># Disable the cover or not</span></span><br><span class="line">  <span class="attr">index_enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">aside_enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">archives_enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># When cover is not set, the default cover is displayed</span></span><br><span class="line">  <span class="attr">default_cover:</span></span><br><span class="line">    <span class="comment"># - xxx.jpg</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace Broken Images</span></span><br><span class="line"><span class="attr">error_img:</span></span><br><span class="line">  <span class="attr">flink:</span> <span class="string">/img/friend_404.gif</span></span><br><span class="line">  <span class="attr">post_page:</span> <span class="string">/img/404.jpg</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># A simple 404 page</span></span><br><span class="line"><span class="attr">error_404:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">subtitle:</span> <span class="string">&#x27;Page Not Found&#x27;</span></span><br><span class="line">  <span class="attr">background:</span> <span class="string">/img/error-page.png</span></span><br><span class="line"></span><br><span class="line"><span class="attr">post_meta:</span></span><br><span class="line">  <span class="comment"># Home Page</span></span><br><span class="line">  <span class="attr">page:</span></span><br><span class="line">    <span class="comment"># Choose: created / updated / both</span></span><br><span class="line">    <span class="attr">date_type:</span> <span class="string">created</span></span><br><span class="line">    <span class="comment"># Choose: date / relative</span></span><br><span class="line">    <span class="attr">date_format:</span> <span class="string">date</span></span><br><span class="line">    <span class="attr">categories:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">tags:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">label:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">post:</span></span><br><span class="line">    <span class="comment"># Choose: left / center</span></span><br><span class="line">    <span class="attr">position:</span> <span class="string">left</span></span><br><span class="line">    <span class="comment"># Choose: created / updated / both</span></span><br><span class="line">    <span class="attr">date_type:</span> <span class="string">both</span></span><br><span class="line">    <span class="comment"># Choose: date / relative</span></span><br><span class="line">    <span class="attr">date_format:</span> <span class="string">date</span></span><br><span class="line">    <span class="attr">categories:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">tags:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">label:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+各个选项的含义建议看官方文档，推荐将图片放到<code>themes\butterfly\source\img</code>下。</p>
+<h2 id="配置latex">2.4. 配置LaTeX</h2>
+<p>你应该能看到本文是可以流畅使用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>的，这里使用的是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>KaTeX</mtext></mrow><annotation encoding="application/x-tex">\KaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">K</span><span class="mspace" style="margin-right:-0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>。</p>
+<p>打开<code>themes/butterfly/_config.yml</code>，修改下列选项
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># --------------------------------------</span></span><br><span class="line"><span class="comment"># Math</span></span><br><span class="line"><span class="comment"># --------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># About the per_page</span></span><br><span class="line"><span class="comment"># if you set it to true, it will load mathjax/katex script in each page</span></span><br><span class="line"><span class="comment"># if you set it to false, it will load mathjax/katex script according to your setting (add the &#x27;mathjax: true&#x27; or &#x27;katex: true&#x27; in page&#x27;s front-matter)</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="comment"># Choose: mathjax, katex</span></span><br><span class="line">  <span class="comment"># Leave it empty if you don&#x27;t need math</span></span><br><span class="line">  <span class="attr">use:</span> <span class="string">katex</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">hide_scrollbar:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="comment"># Enable the contextual menu</span></span><br><span class="line">    <span class="attr">enableMenu:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Choose: all / ams / none, This controls whether equations are numbered and how</span></span><br><span class="line">    <span class="attr">tags:</span> <span class="string">none</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">katex:</span></span><br><span class="line">    <span class="comment"># Enable the copy KaTeX formula</span></span><br><span class="line">    <span class="attr">copy_tex:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure> 另外需要安装的插件 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm un hexo<span class="literal">-renderer-marked</span> <span class="literal">--save</span> <span class="comment"># 如果有安装这个的话，卸载</span></span><br><span class="line">npm un hexo<span class="literal">-renderer-kramed</span> <span class="literal">--save</span> <span class="comment"># 如果有安装这个的话，卸载</span></span><br><span class="line"></span><br><span class="line">npm i hexo<span class="literal">-renderer-markdown-it</span> <span class="literal">--save</span> <span class="comment"># 需要安装这个渲染插件</span></span><br><span class="line">npm install katex @renbaoshuo/markdown<span class="literal">-it-katex</span> <span class="comment"># 需要安装这个katex插件</span></span><br></pre></td></tr></table></figure>
+在<code>_config.yml</code>中添加： <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;@renbaoshuo/markdown-it-katex&#x27;</span></span><br></pre></td></tr></table></figure>
+试着在博客中添加LaTeX公式，测试行间公式<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mn>0</mn><mi>π</mi></msubsup><mi>sin</mi><mo>⁡</mo><mi>x</mi><mi mathvariant="normal">d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_0^\pi\sin x\mathrm dx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2151em;vertical-align:-0.3558em;"></span><span class="mop"><span class="mop op-symbol small-op" style="margin-right:0.19445em;position:relative;top:-0.0006em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8593em;"><span style="top:-2.3442em;margin-left:-0.1945em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span><span style="top:-3.2579em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">π</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3558em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mord mathrm">d</span><span class="mord mathnormal">x</span></span></span></span>和公式块
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mo>∫</mo><mn>0</mn><mi>π</mi></msubsup><mi>sin</mi><mo>⁡</mo><mi>x</mi><mi mathvariant="normal">d</mi><mi>x</mi><mspace linebreak="newline"></mspace><mrow><mo fence="true">[</mo><mtable rowspacing="0.16em" columnalign="center center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>a</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>b</mi></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>c</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>d</mi></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow><mo>=</mo><mi>a</mi><mi>d</mi><mo>−</mo><mi>b</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">
+\int_0^\pi\sin x\mathrm dx\\
+\begin{bmatrix}
+a&amp;b\\
+c&amp;d
+\end{bmatrix}=ad-bc
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.3262em;vertical-align:-0.9119em;"></span><span class="mop"><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4143em;"><span style="top:-1.7881em;margin-left:-0.4445em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span><span style="top:-3.8129em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">π</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9119em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mord mathrm">d</span><span class="mord mathnormal">x</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">a</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">b</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">c</span></span></span></span></span> 观察能否成功渲染。</p>
+<h2 id="配置评论区">2.5. 配置评论区</h2>
+<p>本博客使用的是Waline，配置同样建议参考<a
+target="_blank" rel="noopener" href="https://waline.js.org/guide/get-started/">Waline官方文档</a>。
+配置<code>themes/butterfly/_config.yml</code>，注意这里bg尺寸不宜太大，同时强烈建议使用透明背景。
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="comment"># Up to two comments system, the first will be shown as default</span></span><br><span class="line">  <span class="comment"># Leave it empty if you don&#x27;t need comments</span></span><br><span class="line">  <span class="comment"># Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk</span></span><br><span class="line">  <span class="comment"># Format of two comments system : Disqus,Waline</span></span><br><span class="line">  <span class="attr">use:</span> <span class="string">waline</span></span><br><span class="line">  <span class="comment"># Display the comment name next to the button</span></span><br><span class="line">  <span class="attr">text:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Lazyload: The comment system will be load when comment element enters the browser&#x27;s viewport.</span></span><br><span class="line">  <span class="comment"># If you set it to true, the comment count will be invalid</span></span><br><span class="line">  <span class="attr">lazyload:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># Display comment count in post&#x27;s top_img</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># Display comment count in Home Page</span></span><br><span class="line">  <span class="attr">card_post_count:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Waline - A simple comment system with backend support fork from Valine</span></span><br><span class="line"><span class="comment"># https://waline.js.org/</span></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">waline-eta-ten.vercel.app</span></span><br><span class="line">  <span class="attr">bg:</span></span><br><span class="line">  <span class="comment"># Use Waline pageview count as the page view count</span></span><br><span class="line">  <span class="attr">pageview:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">option:</span></span><br></pre></td></tr></table></figure></p>
+<p>文档写的很详细，这里仅补充个人遇到的问题。</p>
+<ol type="1">
+<li>若Vercel部署失败，建议等一段时间重试。</li>
+<li>Vercel部署完成后有三个网页地址，有的不行，如果部署到博客后出现<code>fetch failed</code>之类的错误就换一个，理论上是<code>waline-****-ten.vercel.app</code>（<code>ten</code>也许也是可变参数？）。</li>
+</ol>
+<h2 id="npm包列表">2.6. npm包列表</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">hexo-site@0.0.0 C:\Users\****\blog</span><br><span class="line">+-- @renbaoshuo/markdown-it-katex@2.0.2</span><br><span class="line">+-- hexo-deployer-git@4.0.0</span><br><span class="line">+-- hexo-filter-katex@1.1.0</span><br><span class="line">+-- hexo-filter-mathjax@0.9.0</span><br><span class="line">+-- hexo-generator-archive@2.0.0</span><br><span class="line">+-- hexo-generator-category@2.0.0</span><br><span class="line">+-- hexo-generator-feed@3.0.0</span><br><span class="line">+-- hexo-generator-index@3.0.0</span><br><span class="line">+-- hexo-generator-searchdb@1.5.0</span><br><span class="line">+-- hexo-generator-sitemap@3.0.1</span><br><span class="line">+-- hexo-generator-tag@2.0.0</span><br><span class="line">+-- hexo-math@5.0.0</span><br><span class="line">+-- hexo-renderer-ejs@2.0.0</span><br><span class="line">+-- hexo-renderer-markdown-it@7.1.1</span><br><span class="line">+-- hexo-renderer-pandoc@0.5.0</span><br><span class="line">+-- hexo-renderer-pug@3.0.0</span><br><span class="line">+-- hexo-renderer-stylus@3.0.1</span><br><span class="line">+-- hexo-server@3.0.0</span><br><span class="line">+-- hexo-theme-landscape@1.1.0</span><br><span class="line">+-- hexo-wordcount@6.0.1</span><br><span class="line">+-- hexo@7.3.0</span><br><span class="line">`-- katex@0.16.22</span><br></pre></td></tr></table></figure>
+<p>这里实现的是一个极为简化的版本，后续也许还会更新自己的实现，但是不会再更新这篇博客了，更建议读者自己实现。</p>
+<h1 id="部署到githubpage上">3. 部署到GithubPage上</h1>
+<h2 id="创建一个githubpage">3.1. 创建一个GithubPage</h2>
+<p>创建项目<code>&lt;username&gt;.github.io</code>。注意在Settings/Code
+and automation/Pages类里面修改Source为Deploy from a branch,
+Branch选择master /(root)，如图。 <img
+src="https://s21.ax1x.com/2025/05/17/pEvYCFS.md.png" /></p>
+<h2 id="修改本地配置">3.2. 修改本地配置</h2>
+<p>修改<code>_config.yml</code> <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://&lt;username&gt;.github.io</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="推送到githubpage">3.3. 推送到GithubPage</h2>
+<p>安装<code>deploy-git</code>，然后推送即可。 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo<span class="literal">-deployer-git</span> <span class="literal">--save</span></span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d <span class="comment"># hexo deploy</span></span><br></pre></td></tr></table></figure>
+第一次推送可能需要一段时间才能访问成功。</p>
+<p>若推送出现网络状况，可考虑更换SSH方式，配置SSH密钥后改为SSH形式，如下
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
+<p><br />
+<br />
+Referfences:<br />
+1. <a
+target="_blank" rel="noopener" href="https://mini-pi.github.io/2024/02/28/how-to-make-blog-wedsite/">https://mini-pi.github.io/2024/02/28/how-to-make-blog-wedsite/</a>
+2. <a target="_blank" rel="noopener" href="https://butterfly.js.org/">https://butterfly.js.org/</a> 3.
+<a target="_blank" rel="noopener" href="https://waline.js.org/">https://waline.js.org/</a></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E4%B8%9C%E8%A5%BF%EF%BC%9F/">奇奇怪怪的东西？</a></div><div class="post-share"><div class="social-share" data-image="https://s21.ax1x.com/2025/05/17/pEvJvLt.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/05/17/beginning/" title="A new beginning"><img class="cover" src="https://s21.ax1x.com/2025/05/17/pEvJodK.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">A new beginning</div></div><div class="info-2"><div class="info-item-1">忙了一天终于是配好了 hexo + github page...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/17/beginning/" title="A new beginning"><img class="cover" src="https://s21.ax1x.com/2025/05/17/pEvJodK.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-17</div><div class="info-item-2">A new beginning</div></div><div class="info-2"><div class="info-item-1">忙了一天终于是配好了 hexo + github page...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/92520387_p0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">pi-uke</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/piuke"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-text">0. 准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2hexo"><span class="toc-text">1. 本地部署Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%90%AD%E8%BD%BD%E4%B8%BB%E9%A2%98"><span class="toc-text">2. 搭载主题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85butterfly%E5%B9%B6%E9%85%8D%E7%BD%AE"><span class="toc-text">2.1. 安装butterfly并配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF"><span class="toc-text">2.2. 配置个人信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%9B%BE%E7%89%87"><span class="toc-text">2.3. 配置图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AElatex"><span class="toc-text">2.4. 配置LaTeX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%AF%84%E8%AE%BA%E5%8C%BA"><span class="toc-text">2.5. 配置评论区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm%E5%8C%85%E5%88%97%E8%A1%A8"><span class="toc-text">2.6. npm包列表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0githubpage%E4%B8%8A"><span class="toc-text">3. 部署到GithubPage上</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAgithubpage"><span class="toc-text">3.1. 创建一个GithubPage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE"><span class="toc-text">3.2. 修改本地配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E5%88%B0githubpage"><span class="toc-text">3.3. 推送到GithubPage</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/05/17/blogmaker/" title="Windows平台使用Hexo+GithubPage配置Butterfly博客"><img src="https://s21.ax1x.com/2025/05/17/pEvJvLt.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows平台使用Hexo+GithubPage配置Butterfly博客"/></a><div class="content"><a class="title" href="/2025/05/17/blogmaker/" title="Windows平台使用Hexo+GithubPage配置Butterfly博客">Windows平台使用Hexo+GithubPage配置Butterfly博客</a><time datetime="2025-05-17T09:26:08.000Z" title="发表于 2025-05-17 17:26:08">2025-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/17/beginning/" title="A new beginning"><img src="https://s21.ax1x.com/2025/05/17/pEvJodK.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="A new beginning"/></a><div class="content"><a class="title" href="/2025/05/17/beginning/" title="A new beginning">A new beginning</a><time datetime="2025-05-17T08:20:42.000Z" title="发表于 2025-05-17 16:20:42">2025-05-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/100734973_p0.png);"><div id="footer-wrap"><div class="copyright">&copy;2025 By pi-uke</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'waline-eta-ten.vercel.app',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
