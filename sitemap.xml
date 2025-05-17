@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://piuke.github.io/2025/05/16/hello-world/</loc>
+    <loc>https://piuke.github.io/2025/05/17/beginning/</loc>
     
-    <lastmod>2025-05-16</lastmod>
+    <lastmod>2025-05-17</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,11 +13,18 @@
 
   <url>
     <loc>https://piuke.github.io/</loc>
-    <lastmod>2025-05-16</lastmod>
+    <lastmod>2025-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>https://piuke.github.io/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E4%B8%9C%E8%A5%BF%EF%BC%9F/</loc>
+    <lastmod>2025-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 
   
